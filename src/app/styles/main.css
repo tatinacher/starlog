@@ -5,25 +5,28 @@
 :root {
   --bg-base:    #0f172a;
   --bg-surface: #1e293b;
-  --bg-muted:   #0f172a;
+  --bg-hover:   #263348;
+  --bg-muted:   #1e293b;
   --text-base:  #f8fafc;
-  --border:     #1e293b;
+  --border:     #2d3f55;
   --accent:     #818cf8;
 }
 
 .theme-dark {
   --bg-base:    #0f172a;
   --bg-surface: #1e293b;
-  --bg-muted:   #0f172a;
+  --bg-hover:   #263348;
+  --bg-muted:   #1e293b;
   --text-base:  #f8fafc;
-  --border:     #1e293b;
+  --border:     #2d3f55;
   --accent:     #818cf8;
 }
 
 .theme-night-red {
   --bg-base:    #100505;
   --bg-surface: #1a0a0a;
-  --bg-muted:   #100505;
+  --bg-hover:   #2a0e0e;
+  --bg-muted:   #1a0a0a;
   --text-base:  #fca5a5;
   --border:     #3b1212;
   --accent:     #f87171;
@@ -32,6 +35,7 @@
 .theme-light {
   --bg-base:    #f1f5f9;
   --bg-surface: #ffffff;
+  --bg-hover:   #e2e8f0;
   --bg-muted:   #e2e8f0;
   --text-base:  #0f172a;
   --border:     #cbd5e1;
@@ -58,7 +62,7 @@ body {
 .divide-theme > * + * { border-top: 1px solid var(--border); }
 
 .hover-muted { transition: background 0.15s; }
-.hover-muted:hover { background: var(--bg-muted) !important; }
+.hover-muted:hover { background: var(--bg-hover) !important; }
 
 .input-theme {
   background: var(--bg-muted);
