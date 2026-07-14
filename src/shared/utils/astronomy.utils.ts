@@ -20,6 +20,7 @@ export function formatDec(decDegrees: number): string {
 }
 
 const DISTANCE_UNIT_LABELS: Record<DistanceUnit, string> = {
+  [DistanceUnit.Kilometer]:        'км',
   [DistanceUnit.AstronomicalUnit]: 'а.е.',
   [DistanceUnit.LightYear]:        'св. лет',
   [DistanceUnit.KiloLightYear]:    'тыс. св. лет',

@@ -58,6 +58,7 @@ export enum AstronomicalCatalog {
 
 /** Единица измерения расстояния до объекта. */
 export enum DistanceUnit {
+  Kilometer = 'km',
   AstronomicalUnit = 'au',
   LightYear = 'ly',
   KiloLightYear = 'kly',
