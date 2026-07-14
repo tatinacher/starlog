@@ -35,3 +35,21 @@ export function formatDistance(distance: Distance | null): string {
   if (!distance) return '—'
   return `${distance.value.toLocaleString('ru-RU')} ${DISTANCE_UNIT_LABELS[distance.unit]}`
 }
+
+/** Форматирует высоту над горизонтом в градусах. */
+export function formatAltitude(altitude: number): string {
+  return `${Math.round(altitude)}°`
+}
+
+/** Форматирует азимут в градусах. */
+export function formatAzimuth(azimuth: number): string {
+  return `${Math.round(azimuth)}°`
+}
+
+const DIRECTION_LABELS = ['С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ'] as const
+
+/** Конвертирует азимут в сторону света (С, СВ, В …). */
+export function azimuthToDirection(azimuth: number): string {
+  const idx = Math.round(azimuth / 45) % 8
+  return DIRECTION_LABELS[idx]
+}

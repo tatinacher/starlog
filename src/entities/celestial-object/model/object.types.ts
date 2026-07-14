@@ -51,8 +51,10 @@ export interface CelestialObject {
   readonly id: UUID
   /** URL-safe идентификатор для роутинга и поиска. Например: "m31", "vega", "saturn". */
   readonly slug: string
-  /** Основное название объекта. */
+  /** Основное название объекта (латиница/международное). */
   readonly name: string
+  /** Русское название объекта. */
+  readonly nameRu: string | null
   /** Альтернативные названия, обозначения Байера, Флемстида, обиходные имена. */
   readonly aliases: readonly string[]
   readonly type: CelestialObjectType
