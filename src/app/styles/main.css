@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-base:    #0f172a;
+  --bg-surface: #1e293b;
+  --bg-hover:   #263348;
+  --bg-muted:   #1e293b;
+  --text-base:  #f8fafc;
+  --border:     #2d3f55;
+  --accent:     #818cf8;
+}
+
+.theme-dark {
+  --bg-base:    #0f172a;
+  --bg-surface: #1e293b;
+  --bg-hover:   #263348;
+  --bg-muted:   #1e293b;
+  --text-base:  #f8fafc;
+  --border:     #2d3f55;
+  --accent:     #818cf8;
+}
+
+.theme-night-red {
+  --bg-base:    #100505;
+  --bg-surface: #1a0a0a;
+  --bg-hover:   #2a0e0e;
+  --bg-muted:   #1a0a0a;
+  --text-base:  #fca5a5;
+  --border:     #3b1212;
+  --accent:     #f87171;
+}
+
+.theme-light {
+  --bg-base:    #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-hover:   #e2e8f0;
+  --bg-muted:   #e2e8f0;
+  --text-base:  #0f172a;
+  --border:     #cbd5e1;
+  --accent:     #4f46e5;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-base);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ── Тематические утилиты ───────────────────────────────────────────────── */
+.bg-base    { background: var(--bg-base)    !important; }
+.bg-surface { background: var(--bg-surface) !important; }
+.bg-muted   { background: var(--bg-muted)   !important; }
+
+.text-theme        { color: var(--text-base) !important; }
+.text-theme-muted  { color: var(--text-base) !important; opacity: 0.5; }
+.text-theme-subtle { color: var(--text-base) !important; opacity: 0.3; }
+.text-accent       { color: var(--accent)    !important; }
+
+.border-theme { border-color: var(--border) !important; }
+.divide-theme > * + * { border-top: 1px solid var(--border); }
+
+.hover-muted { transition: background 0.15s; }
+.hover-muted:hover { background: var(--bg-hover) !important; }
+
+.input-theme {
+  background: var(--bg-muted);
+  color: var(--text-base);
+  border: 1px solid var(--border);
+}
+.input-theme::placeholder { color: var(--text-base); opacity: 0.35; }
+.input-theme:focus { outline: none; border-color: var(--accent); }

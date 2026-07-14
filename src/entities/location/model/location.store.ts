@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { ObservationLocation, CreateLocationDto, UpdateLocationDto } from './location.types'
+import type { Location, CreateLocationDto, UpdateLocationDto } from './location.types'
 import { locationRepository } from '../api/location.repository'
 
 export const useLocationStore = defineStore('location', () => {
-  const items = ref<ObservationLocation[]>([])
+  const items = ref<Location[]>([])
   const activeId = ref<string | null>(null)
   const loading = ref(false)
 

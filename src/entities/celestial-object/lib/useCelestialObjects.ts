@@ -1,8 +1,8 @@
 import { computed } from 'vue'
 import { useObjectStore } from '../model/object.store'
-import type { ObjectType } from '@/entities/astronomy'
+import type { CelestialObjectType } from '@/shared/types/enums'
 
-export function useCelestialObjects(typeFilter?: ObjectType) {
+export function useCelestialObjects(typeFilter?: CelestialObjectType) {
   const store = useObjectStore()
 
   const objects = computed(() => {

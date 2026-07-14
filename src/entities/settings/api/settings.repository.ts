@@ -1,4 +1,5 @@
 import { db } from '@/entities/storage'
+import { toStorable } from '@/shared/utils/storage.utils'
 import type { UserSettings } from '../model/settings.types'
 import { DEFAULT_SETTINGS } from '../model/settings.types'
 
@@ -13,10 +14,10 @@ export const settingsRepository = {
   },
 
   async save(data: UserSettings): Promise<void> {
-    await db.table('settings').put({ ...data, id: SETTINGS_ID })
+    await db.table('settings').put(toStorable({ ...data, id: SETTINGS_ID }))
   },
 
   async reset(): Promise<void> {
-    await db.table('settings').put({ ...DEFAULT_SETTINGS, id: SETTINGS_ID })
+    await db.table('settings').put(toStorable({ ...DEFAULT_SETTINGS, id: SETTINGS_ID }))
   },
 }

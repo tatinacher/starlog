@@ -1,7 +1,14 @@
 import { ref } from 'vue'
 import { useObservationStore } from '@/entities/observation'
 import { useLocationStore } from '@/entities/location'
-import type { CreateObservationDto, ObservationEntry, SkyConditions } from '@/entities/observation'
+import { ObservationStatus } from '@/shared/types/enums'
+import type {
+  CreateObservationDto,
+  ObservationConditions,
+  ObservationInstrument,
+  ObservationCoordinates,
+} from '@/entities/observation'
+import type { ObservationRating, UUID } from '@/shared/types'
 import { toISODate } from '@/shared/utils/date.utils'
 
 export function useLogObservation() {
@@ -11,22 +18,30 @@ export function useLogObservation() {
   const submitting = ref(false)
 
   async function submit(params: {
-    entries: ObservationEntry[]
-    conditions: SkyConditions
-    notes?: string
-    equipment?: string
-    locationId?: string
+    celestialObjectId: UUID
+    conditions?: ObservationConditions
+    instrument?: ObservationInstrument
+    note?: string
+    rating?: ObservationRating
+    tags?: string[]
+    locationId?: UUID
+    observationCoordinates?: ObservationCoordinates
     date?: Date
   }) {
     submitting.value = true
     try {
       const dto: CreateObservationDto = {
-        date: toISODate(params.date ?? new Date()),
+        celestialObjectId: params.celestialObjectId,
+        observedAt: toISODate(params.date ?? new Date()),
         locationId: params.locationId ?? locationStore.activeId,
-        objects: params.entries,
-        conditions: params.conditions,
-        notes: params.notes ?? '',
-        equipment: params.equipment,
+        observationCoordinates: params.observationCoordinates ?? null,
+        instrument: params.instrument ?? null,
+        conditions: params.conditions ?? null,
+        note: params.note ?? null,
+        status: ObservationStatus.Completed,
+        rating: params.rating ?? null,
+        photos: [],
+        tags: params.tags ?? [],
       }
       return await observationStore.create(dto)
     } finally {
