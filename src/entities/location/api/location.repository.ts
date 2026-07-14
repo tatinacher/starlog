@@ -1,6 +1,7 @@
 import { db } from '@/entities/storage'
 import { generateId } from '@/shared/utils/id.utils'
 import { toISODate } from '@/shared/utils/date.utils'
+import { toStorable } from '@/shared/utils/storage.utils'
 import type { Location, CreateLocationDto, UpdateLocationDto } from '../model/location.types'
 
 export const locationRepository = {
@@ -18,12 +19,12 @@ export const locationRepository = {
       id: generateId(),
       createdAt: toISODate(new Date()),
     }
-    await db.table('locations').add(record)
+    await db.table('locations').add(toStorable(record))
     return record
   },
 
   async update(id: string, dto: UpdateLocationDto): Promise<void> {
-    await db.table('locations').update(id, dto)
+    await db.table('locations').update(id, toStorable(dto))
   },
 
   async delete(id: string): Promise<void> {

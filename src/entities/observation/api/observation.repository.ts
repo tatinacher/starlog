@@ -1,6 +1,7 @@
 import { db } from '@/entities/storage'
 import { generateId } from '@/shared/utils/id.utils'
 import { toISODate } from '@/shared/utils/date.utils'
+import { toStorable } from '@/shared/utils/storage.utils'
 import { ObservationStatus } from '@/shared/types/enums'
 import type {
   Observation,
@@ -52,12 +53,12 @@ export const observationRepository = {
       createdAt: now,
       updatedAt: now,
     }
-    await db.table('observations').add(record)
+    await db.table('observations').add(toStorable(record))
     return record
   },
 
   async update(id: string, dto: UpdateObservationDto): Promise<void> {
-    await db.table('observations').update(id, { ...dto, updatedAt: toISODate(new Date()) })
+    await db.table('observations').update(id, toStorable({ ...dto, updatedAt: toISODate(new Date()) }))
   },
 
   async delete(id: string): Promise<void> {
