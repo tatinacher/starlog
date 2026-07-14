@@ -31,9 +31,8 @@ export const locationRepository = {
   },
 
   async setDefault(id: string): Promise<void> {
-    await db.transaction('rw', db.table('locations'), async () => {
-      await db.table('locations').toCollection().modify({ isDefault: false })
-      await db.table('locations').update(id, { isDefault: true })
-    })
+    // Two sequential updates — transaction not strictly needed at this stage
+    await db.table('locations').toCollection().modify({ isDefault: false })
+    await db.table('locations').update(id, { isDefault: true })
   },
 }

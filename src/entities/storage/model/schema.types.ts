@@ -2,6 +2,7 @@
 // Изменение версии схемы всегда требует добавления миграции в migrations.ts.
 
 export interface DbSchema {
+  [tableName: string]: string | null
   observations: string
   celestialObjects: string
   userObjectData: string
