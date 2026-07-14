@@ -1,42 +1,43 @@
 <template>
-  <div class="flex flex-col h-full">
-    <header class="px-4 pt-6 pb-3 border-b" style="background: var(--bg-surface); border-color: var(--border)">
-      <h1 class="text-lg font-semibold" style="color: var(--text-base)">Каталог</h1>
+  <div class="flex flex-col h-full bg-base">
+    <header class="px-4 pt-6 pb-3 bg-surface border-b border-theme">
+      <h1 class="text-lg font-semibold text-theme">Каталог</h1>
       <input
         v-model="query"
         type="search"
         placeholder="Поиск объекта..."
-        class="mt-3 w-full text-sm rounded-lg px-3 py-2 outline-none"
-        style="background: var(--bg-muted); color: var(--text-base); border: 1px solid var(--border)"
+        class="mt-3 w-full text-sm rounded-lg px-3 py-2 input-theme"
       />
     </header>
 
-    <div class="flex-1 overflow-y-auto divide-y divide-slate-800">
+    <div class="flex-1 overflow-y-auto divide-theme">
       <button
         v-for="obj in results"
         :key="obj.id"
-        class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-800 transition-colors"
+        class="w-full flex items-center gap-3 px-4 py-3 text-left hover-muted transition-colors"
       >
         <span class="text-2xl w-8 text-center shrink-0">{{ typeIcon(obj.type) }}</span>
         <div class="flex-1 min-w-0">
           <div class="flex items-baseline gap-2">
-            <span class="text-white font-medium text-sm">{{ obj.name }}</span>
-            <span class="text-slate-500 text-xs truncate">{{ obj.aliases[0] }}</span>
+            <span class="text-theme font-medium text-sm">{{ obj.name }}</span>
+            <span class="text-theme-muted text-xs truncate">{{ obj.aliases[0] }}</span>
           </div>
           <div class="flex items-center gap-2 mt-0.5">
-            <span class="text-slate-400 text-xs">{{ OBJECT_TYPE_LABELS[obj.type as CelestialObjectType] }}</span>
-            <span v-if="obj.constellation" class="text-slate-600 text-xs">· {{ obj.constellation }}</span>
+            <span class="text-theme-muted text-xs">{{ OBJECT_TYPE_LABELS[obj.type as CelestialObjectType] }}</span>
+            <span v-if="obj.constellation" class="text-theme-subtle text-xs">· {{ obj.constellation }}</span>
           </div>
         </div>
         <div class="text-right shrink-0">
-          <div class="text-slate-300 text-sm font-mono">
+          <div class="text-theme text-sm font-mono">
             {{ obj.magnitude !== null ? formatMagnitude(obj.magnitude) : '—' }}
           </div>
-          <div v-if="observedIds.has(obj.id)" class="text-green-500 text-xs mt-0.5">✓ видел</div>
+          <div v-if="observedIds.has(obj.id)" class="text-xs mt-0.5" style="color: var(--accent)">
+            ✓ видел
+          </div>
         </div>
       </button>
 
-      <div v-if="results.length === 0" class="px-4 py-12 text-center text-slate-500 text-sm">
+      <div v-if="results.length === 0" class="px-4 py-12 text-center text-theme-muted text-sm">
         Ничего не найдено
       </div>
     </div>

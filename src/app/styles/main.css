@@ -43,3 +43,27 @@ body {
   color: var(--text-base);
   transition: background-color 0.2s, color 0.2s;
 }
+
+/* ── Тематические утилиты ───────────────────────────────────────────────── */
+.bg-base    { background: var(--bg-base)    !important; }
+.bg-surface { background: var(--bg-surface) !important; }
+.bg-muted   { background: var(--bg-muted)   !important; }
+
+.text-theme        { color: var(--text-base) !important; }
+.text-theme-muted  { color: var(--text-base) !important; opacity: 0.5; }
+.text-theme-subtle { color: var(--text-base) !important; opacity: 0.3; }
+.text-accent       { color: var(--accent)    !important; }
+
+.border-theme { border-color: var(--border) !important; }
+.divide-theme > * + * { border-top: 1px solid var(--border); }
+
+.hover-muted { transition: background 0.15s; }
+.hover-muted:hover { background: var(--bg-muted) !important; }
+
+.input-theme {
+  background: var(--bg-muted);
+  color: var(--text-base);
+  border: 1px solid var(--border);
+}
+.input-theme::placeholder { color: var(--text-base); opacity: 0.35; }
+.input-theme:focus { outline: none; border-color: var(--accent); }
