@@ -11,10 +11,11 @@
     </header>
 
     <div class="flex-1 overflow-y-auto divide-theme">
-      <button
+      <RouterLink
         v-for="obj in results"
         :key="obj.id"
-        class="w-full flex items-center gap-3 px-4 py-3 text-left hover-muted transition-colors"
+        :to="`/celestial-object/${obj.slug}`"
+        class="flex items-center gap-3 px-4 py-3 hover-muted transition-colors"
       >
         <span class="text-2xl w-8 text-center shrink-0">{{ typeIcon(obj.type) }}</span>
         <div class="flex-1 min-w-0">
@@ -35,7 +36,7 @@
             ✓ видел
           </div>
         </div>
-      </button>
+      </RouterLink>
 
       <div v-if="results.length === 0" class="px-4 py-12 text-center text-theme-muted text-sm">
         Ничего не найдено

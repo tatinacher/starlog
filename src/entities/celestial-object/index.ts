@@ -9,4 +9,5 @@ export type {
 } from './model/object.types'
 export { useObjectStore } from './model/object.store'
 export { useCelestialObjects } from './lib/useCelestialObjects'
+export { useCelestialObject } from './lib/useCelestialObject'
 export { useObjectStatus } from './lib/useObjectStatus'

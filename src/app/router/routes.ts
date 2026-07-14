@@ -24,6 +24,12 @@ export const routes: RouteRecordRaw[] = [
     meta: { title: 'Каталог' },
   },
   {
+    path: '/celestial-object/:slug',
+    name: 'celestial-object',
+    component: () => import('@/pages/celestial-object/CelestialObjectPage.vue'),
+    meta: { title: 'Объект' },
+  },
+  {
     path: '/settings',
     name: 'settings',
     component: () => import('@/pages/settings/SettingsPage.vue'),
