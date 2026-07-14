@@ -1,7 +1,9 @@
 export type {
   Observation,
-  ObservationEntry,
-  SkyConditions,
+  ObservationConditions,
+  ObservationCoordinates,
+  ObservationInstrument,
+  ObservationPhoto,
   ObservationFilters,
   CreateObservationDto,
   UpdateObservationDto,

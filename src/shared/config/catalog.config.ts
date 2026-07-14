@@ -1,18 +1,20 @@
-import type { ObjectType } from '@/entities/astronomy'
+import { CelestialObjectType } from '@/shared/types/enums'
 
-export const OBJECT_TYPE_LABELS: Record<ObjectType, string> = {
-  galaxy: 'Галактика',
-  nebula: 'Туманность',
-  'open-cluster': 'Рассеянное скопление',
-  'globular-cluster': 'Шаровое скопление',
-  'planetary-nebula': 'Планетарная туманность',
-  'supernova-remnant': 'Остаток сверхновой',
-  'double-star': 'Двойная звезда',
-  star: 'Звезда',
-  planet: 'Планета',
-  moon: 'Спутник',
-  comet: 'Комета',
-  asteroid: 'Астероид',
+export const OBJECT_TYPE_LABELS: Record<CelestialObjectType, string> = {
+  [CelestialObjectType.Star]: 'Звезда',
+  [CelestialObjectType.DoubleStar]: 'Двойная звезда',
+  [CelestialObjectType.VariableStar]: 'Переменная звезда',
+  [CelestialObjectType.Planet]: 'Планета',
+  [CelestialObjectType.Moon]: 'Спутник',
+  [CelestialObjectType.Sun]: 'Солнце',
+  [CelestialObjectType.Asteroid]: 'Астероид',
+  [CelestialObjectType.Comet]: 'Комета',
+  [CelestialObjectType.Galaxy]: 'Галактика',
+  [CelestialObjectType.Nebula]: 'Туманность',
+  [CelestialObjectType.PlanetaryNebula]: 'Планетарная туманность',
+  [CelestialObjectType.SupernovaRemnant]: 'Остаток сверхновой',
+  [CelestialObjectType.OpenCluster]: 'Рассеянное скопление',
+  [CelestialObjectType.GlobularCluster]: 'Шаровое скопление',
 }
 
 export const BORTLE_LABELS: Record<number, string> = {

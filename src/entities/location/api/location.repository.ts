@@ -1,19 +1,19 @@
 import { db } from '@/entities/storage'
 import { generateId } from '@/shared/utils/id.utils'
 import { toISODate } from '@/shared/utils/date.utils'
-import type { ObservationLocation, CreateLocationDto, UpdateLocationDto } from '../model/location.types'
+import type { Location, CreateLocationDto, UpdateLocationDto } from '../model/location.types'
 
 export const locationRepository = {
-  async getAll(): Promise<ObservationLocation[]> {
-    return db.table<ObservationLocation>('locations').toArray()
+  async getAll(): Promise<Location[]> {
+    return db.table<Location>('locations').toArray()
   },
 
-  async getById(id: string): Promise<ObservationLocation | undefined> {
-    return db.table<ObservationLocation>('locations').get(id)
+  async getById(id: string): Promise<Location | undefined> {
+    return db.table<Location>('locations').get(id)
   },
 
-  async create(dto: CreateLocationDto): Promise<ObservationLocation> {
-    const record: ObservationLocation = {
+  async create(dto: CreateLocationDto): Promise<Location> {
+    const record: Location = {
       ...dto,
       id: generateId(),
       createdAt: toISODate(new Date()),
@@ -31,7 +31,6 @@ export const locationRepository = {
   },
 
   async setDefault(id: string): Promise<void> {
-    // Two sequential updates — transaction not strictly needed at this stage
     await db.table('locations').toCollection().modify({ isDefault: false })
     await db.table('locations').update(id, { isDefault: true })
   },
