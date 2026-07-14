@@ -26,12 +26,13 @@
 
     <!-- Контент -->
     <template v-else-if="object">
-      <div class="flex-1 overflow-y-auto pb-28">
+      <div class="flex-1 overflow-y-auto">
 
         <!-- Hero -->
         <div class="px-6 py-8 bg-surface border-b border-theme">
           <div class="text-5xl mb-4">{{ typeIcon }}</div>
           <h1 class="text-3xl font-bold text-theme tracking-tight">{{ object.name }}</h1>
+          <p v-if="object.nameRu" class="text-lg text-theme-muted mt-1 font-light">{{ object.nameRu }}</p>
           <div class="flex items-center gap-2 mt-2 flex-wrap">
             <span class="text-theme-muted text-sm">{{ typeLabel }}</span>
             <span v-if="constellationName" class="text-theme-subtle text-sm">·</span>
@@ -96,14 +97,13 @@
         </div>
       </div>
 
-      <!-- Кнопка действия -->
-      <div class="absolute bottom-0 left-0 right-0 px-4 pb-6 pt-3"
-           style="background: linear-gradient(to top, var(--bg-base) 70%, transparent)">
+      <!-- Кнопка действия — вне скролла, над нижним табом -->
+      <div class="px-4 pb-4 pt-3 border-t border-theme shrink-0" style="background: var(--bg-base)">
         <button
           class="w-full py-4 rounded-2xl font-semibold text-sm transition-opacity active:opacity-70"
           style="background: var(--accent); color: #fff"
         >
-          ✓ Mark as observed
+          ✓ Отметить как наблюдаемый
         </button>
       </div>
     </template>

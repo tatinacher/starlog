@@ -21,7 +21,8 @@
         <div class="flex-1 min-w-0">
           <div class="flex items-baseline gap-2">
             <span class="text-theme font-medium text-sm">{{ obj.name }}</span>
-            <span class="text-theme-muted text-xs truncate">{{ obj.aliases[0] }}</span>
+            <span v-if="obj.nameRu" class="text-theme-muted text-xs truncate">{{ obj.nameRu }}</span>
+            <span v-else-if="obj.aliases[0]" class="text-theme-muted text-xs truncate">{{ obj.aliases[0] }}</span>
           </div>
           <div class="flex items-center gap-2 mt-0.5">
             <span class="text-theme-muted text-xs">{{ OBJECT_TYPE_LABELS[obj.type as CelestialObjectType] }}</span>
@@ -63,6 +64,7 @@ const results = computed(() => {
   return store.catalog.filter(
     (o) =>
       o.name.toLowerCase().includes(q) ||
+      (o.nameRu?.toLowerCase().includes(q) ?? false) ||
       o.aliases.some((a) => a.toLowerCase().includes(q)) ||
       o.catalogIds.some((c) => c.id.toLowerCase().includes(q)),
   )
